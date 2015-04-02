@@ -1,24 +1,24 @@
   <div class="form-group">
-		<%= form_for @project do |f| %>
+		<%= form_for project do |f| %>
 			<%= render 'devise/shared/error_messages', object: f.object %>
-			<%= f.label :name	 %> 
+			<%= f.label :name	 %>
 		  <%= f.text_field :name, class: 'form-control' %>
 
-			<%= f.label :description %> 
+			<%= f.label :description %>
 		  <%= f.text_area :description, class: 'form-control'  %>
 
-		  <%= f.label :due_date %> 
-			<%= f.datetime_select :due_date, class: 'form-control'  %>	
+		  <%= f.label :due_date %>
+			<%= f.datetime_select :due_date, class: 'form-control'  %>
 
 			<%= f.label :priority %>
-			<%= f.select :priority, Project.priorities.keys.map { |s| [s.humanize, s] }, class: "form-control" %>       		 
-			<%= f.label :complete %> 
-			<%= f.check_box :complete %> 
+			<%= f.select :priority, Project.priorities.keys.map { |s| [s.humanize, s] }, class: "form-control" %>
+			<%= f.label :complete %>
+			<%= f.check_box :complete %>
 
-			<% if @project.user_id == nil %>
-			<%= f.hidden_field :user_id, value: current_user.id, class: 'form-control'  %>	  
+			<% if project.user_id == nil %>
+			<%= f.hidden_field :user_id, value: current_user.id, class: 'form-control'  %>
 			<% end %>
-			
+
 		  <%= f.submit "Submit", class: "btn submit-btn"  %>
 		<% end %>
 	</div>

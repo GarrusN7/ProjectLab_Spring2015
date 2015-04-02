@@ -3,8 +3,6 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def show
-    @task = Task.new
-    @user_options = User.all.map{|u| [ u.first_name + " " + u.last_name, u.id ] }
   end
 
   def index
