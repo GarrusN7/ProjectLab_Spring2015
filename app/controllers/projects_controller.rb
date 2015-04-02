@@ -3,7 +3,8 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def show
-
+    @task = Task.new
+    @user_options = User.all.map{|u| [ u.first_name + " " + u.last_name, u.id ] }
   end
 
   def index
@@ -60,7 +61,7 @@ class ProjectsController < ApplicationController
   end
 
   private
-  
+
     def project_params
       params.require(:project).permit(:name, :description, :due_date, :complete, :priority, :user_id)
     end
