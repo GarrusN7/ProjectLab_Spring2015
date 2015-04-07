@@ -4,7 +4,6 @@ class ProjectsController < ApplicationController
 
   def show
     # @task = Task.new
-
   end
 
   def index
@@ -30,6 +29,10 @@ class ProjectsController < ApplicationController
     if current_user.id != @project.user_id
       flash[:danger] = "You are not authorized to edit this project."
       redirect_to projects_path
+    end
+    respond_to do |format|
+      format.html { redirect_to @project }
+      format.js
     end
   end
 
@@ -61,7 +64,7 @@ class ProjectsController < ApplicationController
   end
 
   private
-  
+
     def project_params
       params.require(:project).permit(:name, :description, :due_date, :complete, :priority, :user_id)
     end
